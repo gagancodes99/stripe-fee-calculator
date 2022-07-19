@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.b4f732dc.js",
-    "static/js/787.f2eee958.chunk.js": "/static/js/787.f2eee958.chunk.js",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.b4f732dc.js.map": "/static/js/main.b4f732dc.js.map",
-    "787.f2eee958.chunk.js.map": "/static/js/787.f2eee958.chunk.js.map"
+    "main.css": "/stripe-fee-calculator/static/css/main.073c9b0a.css",
+    "main.js": "/stripe-fee-calculator/static/js/main.8196b01b.js",
+    "static/js/787.f2eee958.chunk.js": "/stripe-fee-calculator/static/js/787.f2eee958.chunk.js",
+    "index.html": "/stripe-fee-calculator/index.html",
+    "main.073c9b0a.css.map": "/stripe-fee-calculator/static/css/main.073c9b0a.css.map",
+    "main.8196b01b.js.map": "/stripe-fee-calculator/static/js/main.8196b01b.js.map",
+    "787.f2eee958.chunk.js.map": "/stripe-fee-calculator/static/js/787.f2eee958.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.b4f732dc.js"
+    "static/js/main.8196b01b.js"
   ]
 }
