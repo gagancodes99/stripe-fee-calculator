@@ -34,6 +34,12 @@
   max-width: 400px;
   padding: 4% 4%;
 }
+.inpt-cont label{
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: left;
+  padding: 0 5px;
+}
 .inpt-cont input{
   margin: 10px 0 10px 0;
   padding: 12px 15px;

@@ -47,6 +47,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
             <form className="inpt-cont" onSubmit={(e)=>{e.preventDefault()}}>
+              <label>Goal Amount</label>
               <input 
               name='amount' 
               placeholder='Amount'
@@ -55,6 +56,7 @@ class App extends Component {
               min={0}
               value={this.state.goal}
               onChange={(e)=>this.setState({goal:parseFloat(e.target.value)})}/>
+              <label>Percentage Charge</label>
               <input 
               name='percent' 
               placeholder='Percent charge'
@@ -63,6 +65,7 @@ class App extends Component {
               min={0}
               value={this.state.percent}
               onChange={(e)=>this.setState({percent:parseFloat(e.target.value)})}/>
+              <label>fixed Charge</label>
               <input 
               name='fixed' 
               placeholder='Fixed charge'
@@ -78,7 +81,7 @@ class App extends Component {
                Reset
              </button>
             </form>
-            <div clasaName="text-cont">
+            <div className="text-cont">
               <div className="text-1">
                 Old Amount: {this.state.goal}
                 <br/>
