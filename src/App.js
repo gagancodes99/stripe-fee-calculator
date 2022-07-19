@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-            <form onSubmit={(e)=>{e.preventDefault()}}>
+            <form className="inpt-cont" onSubmit={(e)=>{e.preventDefault()}}>
               <input 
               name='amount' 
               placeholder='Amount'
@@ -78,19 +78,21 @@ class App extends Component {
                Reset
              </button>
             </form>
-            <div>
-              Old Amount: {this.state.goal}
-              <br/>
-              Total Fee: {this.state.totalFeeOld}
-              <br/>
-              You will receive: {this.state.receiveAmountOld}
-            </div>
-            <div>
-              You should ask for: {this.state.askAmount}
-              <br/>
-              Total Fee: {this.state.totalFeeNew}
-              <br/>
-              You will receive: {this.state.receiveAmountNew}
+            <div clasaName="text-cont">
+              <div className="text-1">
+                Old Amount: {this.state.goal}
+                <br/>
+                Total Fee: {this.state.totalFeeOld}
+                <br/>
+                You will receive: {this.state.receiveAmountOld}
+              </div>
+              <div className="text-2">
+                You should ask for: {this.state.askAmount}
+                <br/>
+                Total Fee: {this.state.totalFeeNew}
+                <br/>
+                You will receive: {this.state.receiveAmountNew}
+              </div>
             </div>
         </div>
       </div>

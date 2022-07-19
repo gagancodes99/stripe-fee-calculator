@@ -22,10 +22,36 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Rubik', sans-serif;
 }
 
 .App-link {
   color: #61dafb;
+}
+.inpt-cont{
+  display: grid;
+  width: 92%;
+  max-width: 400px;
+  padding: 4% 4%;
+}
+.inpt-cont input{
+  margin: 10px 0 10px 0;
+  padding: 12px 15px;
+  border-radius: 7px;
+  border: 0;
+  font-size: 20px; 
+}
+.inpt-cont button{
+  padding: 12px 15px;
+  border-radius: 7px;
+  margin: 10px 0;
+  font-size: 20px; 
+  background-color: white;
+  border: 0;
+}
+.text-cont{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @keyframes App-logo-spin {
