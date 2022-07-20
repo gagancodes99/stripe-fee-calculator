@@ -65,7 +65,7 @@ class App extends Component {
               min={0}
               value={this.state.percent}
               onChange={(e)=>this.setState({percent:parseFloat(e.target.value)})}/>
-              <label>fixed Charge</label>
+              <label>Fixed Charge</label>
               <input 
               name='fixed' 
               placeholder='Fixed charge'
@@ -74,29 +74,26 @@ class App extends Component {
               min={0}
               value={this.state.fixed}
               onChange={(e)=>this.setState({fixed:parseFloat(e.target.value)})}/>
-             <button onClick={this.calculate}>
+             <button className="calculate" onClick={this.calculate}>
                Calculate
              </button>
-             <button onClick={this.reset}>
+             <button className="reset" onClick={this.reset}>
                Reset
              </button>
+              <div className="text-cont">
+                <div className="text-1">
+                  <p>Old Amount: {this.state.goal}</p>
+                  <p>Total Fee: {this.state.totalFeeOld}</p>
+                  <p>You will receive: {this.state.receiveAmountOld}</p>
+                </div>
+                <div className="line"></div>
+                <div className="text-1">
+                  <p>You should ask for: {this.state.askAmount}</p>
+                  <p>Total Fee: {this.state.totalFeeNew}</p>
+                  <p>You will receive: {this.state.receiveAmountNew}</p>
+                </div>
+              </div>
             </form>
-            <div className="text-cont">
-              <div className="text-1">
-                Old Amount: {this.state.goal}
-                <br/>
-                Total Fee: {this.state.totalFeeOld}
-                <br/>
-                You will receive: {this.state.receiveAmountOld}
-              </div>
-              <div className="text-2">
-                You should ask for: {this.state.askAmount}
-                <br/>
-                Total Fee: {this.state.totalFeeNew}
-                <br/>
-                You will receive: {this.state.receiveAmountNew}
-              </div>
-            </div>
         </div>
       </div>
     );

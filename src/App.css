@@ -44,20 +44,43 @@
   margin: 10px 0 10px 0;
   padding: 12px 15px;
   border-radius: 7px;
-  border: 0;
-  font-size: 20px; 
+  border: 2px white solid;
+  font-size: 20px;
+  background-color: transparent;
+  color: white; 
+  outline: none ;
 }
 .inpt-cont button{
   padding: 12px 15px;
   border-radius: 7px;
   margin: 10px 0;
   font-size: 20px; 
-  background-color: white;
-  border: 0;
+  background-color: transparent;
+}
+.calculate{
+  color: green;
+  border: 2px green solid;
+}
+.reset{
+  color: red;
+  border: 2px red solid;
 }
 .text-cont{
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
+}
+.text-1{
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+.text-1 p{
+  margin: 15px 0;
+  font-size: 22px;
+}
+.line{
+  padding: 2px;
+  background-color: aliceblue;
+  border-radius: 20px;
 }
 
 @keyframes App-logo-spin {
