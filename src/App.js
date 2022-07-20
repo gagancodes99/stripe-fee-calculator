@@ -82,15 +82,15 @@ class App extends Component {
              </button>
               <div className="text-cont">
                 <div className="text-1">
-                  <p>Old Amount: {this.state.goal}</p>
-                  <p>Total Fee: {this.state.totalFeeOld}</p>
-                  <p>You will receive: {this.state.receiveAmountOld}</p>
+                  <p>Old Amount: <span>{this.state.goal}</span></p>
+                  <p>Total Fee: <span>{this.state.totalFeeOld}</span></p>
+                  <p>You will receive: <span>{this.state.receiveAmountOld}</span></p>
                 </div>
                 <div className="line"></div>
                 <div className="text-1">
-                  <p>You should ask for: {this.state.askAmount}</p>
-                  <p>Total Fee: {this.state.totalFeeNew}</p>
-                  <p>You will receive: {this.state.receiveAmountNew}</p>
+                  <p>You should ask for: <span>{this.state.askAmount}</span></p>
+                  <p>Total Fee: <span>{this.state.totalFeeNew}</span></p>
+                  <p>You will receive: <span>{this.state.receiveAmountNew}</span></p>
                 </div>
               </div>
             </form>
