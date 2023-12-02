@@ -1,51 +1,92 @@
-import { Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
 const initialState = {
-  askAmount:0.00,
-  totalFeeNew:0.00,
-  receiveAmountNew:0.00,
-  receiveAmountOld:0.00,
-  totalFeeOld:0.00,
-  goal:0.00,
-  percent:1.75,
-  fixed:0.30
-}
+  askAmount: 0.00,
+  totalFeeNew: 0.00,
+  receiveAmountNew: 0.00,
+  receiveAmountOld: 0.00,
+  totalFeeOld: 0.00,
+  goal: 0.00,
+  percent: 1.75,
+  fixed: 0.30,
+};
+
 class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = initialState
+  constructor(props) {
+    super(props);
+    this.state = initialState;
   }
 
   calculate = () => {
-    // console.log(this.state)
-    let askAmount = (this.state.goal + this.state.fixed ) / (1 - (this.state.percent/100))
-    console.log('To ask: '+askAmount)
-    let totalFeeNew = (askAmount*(this.state.percent/100))+this.state.fixed
-    console.log('New Total Fee: '+totalFeeNew)
-    let receiveAmountNew = askAmount - totalFeeNew
-    console.log('New Receive amount: '+receiveAmountNew)
-
-    let totalFeeOld = (this.state.goal*(this.state.percent/100))+this.state.fixed
-    console.log('Old Total Fee: '+totalFeeOld)
-    let receiveAmountOld = this.state.goal - totalFeeOld
-    console.log('Old Receive amount: '+receiveAmountOld)
+    let askAmount = (this.state.goal + this.state.fixed) / (1 - this.state.percent / 100);
+    let totalFeeNew = askAmount * (this.state.percent / 100) + this.state.fixed;
+    let receiveAmountNew = askAmount - totalFeeNew;
+    let totalFeeOld = this.state.goal * (this.state.percent / 100) + this.state.fixed;
+    let receiveAmountOld = this.state.goal - totalFeeOld;
 
     this.setState({
-      askAmount:askAmount.toFixed(2),
-      totalFeeNew:totalFeeNew.toFixed(2),
-      receiveAmountNew:receiveAmountNew.toFixed(2),
-      totalFeeOld:totalFeeOld.toFixed(2),
-      receiveAmountOld:receiveAmountOld.toFixed(2)
-    })
-  }
+      askAmount: askAmount.toFixed(2) || 0.00,
+      totalFeeNew: totalFeeNew.toFixed(2) || 0.00,
+      receiveAmountNew: receiveAmountNew.toFixed(2) || 0.00,
+      totalFeeOld: totalFeeOld.toFixed(2) || 0.00,
+      receiveAmountOld: receiveAmountOld.toFixed(2) || 0.00,
+    });
+  };
+
   reset = () => {
-    this.setState(initialState)
-  }
-  render(){
+    this.setState(initialState);
+  };
+
+  render() {
     return (
       <div className="App">
         <div className="App-header">
+          
+          <h1>Stripe Fee Calculator</h1>
+          <p>
+            Welcome to the Stripe Fee Calculator! Easily calculate fees for your transactions
+            using Stripe.
+          </p>
+          <p>
+            This calculator helps you understand the fees associated with your transactions on
+            Stripe.
+          </p>
+
+          <h2>How It Works</h2>
+          <p>
+            Enter your goal amount, the percentage charge, and the fixed charge. Click "Calculate"
+            to see the fee breakdown for both old and new transactions.
+          </p>
+
+          <h2>Fee Calculation Formula</h2>
+          <p>
+            The fee is calculated using the formula: <code>(amount * percent / 100) + fixed</code>.
+          </p>
+
+          <table>
+          <tbody>
+          <tr>
+            <th></th>
+            <th>Amount</th>
+            <th>Fee</th>
+            <th>Receive</th>
+          </tr>
+          <tr>
+            <td>Old</td>
+            <td>{this.state.goal}</td>
+            <td>{this.state.totalFeeOld}</td>
+            <td>{this.state.receiveAmountOld}</td>
+          </tr>
+          <tr>
+            <td>New</td>
+            <td>{this.state.askAmount}</td>
+            <td>{this.state.totalFeeNew}</td>
+            <td>{this.state.receiveAmountNew}</td>
+          </tr>
+          </tbody>
+        </table>
+
             <form className="inpt-cont" onSubmit={(e)=>{e.preventDefault()}}>
               <label>Goal Amount</label>
               <input 
@@ -80,20 +121,24 @@ class App extends Component {
              <button className="reset" onClick={this.reset}>
                Reset
              </button>
-              <div className="text-cont">
-                <div className="text-1">
-                  <p>Old Amount: <span>{this.state.goal}</span></p>
-                  <p>Total Fee: <span>{this.state.totalFeeOld}</span></p>
-                  <p>You will receive: <span>{this.state.receiveAmountOld}</span></p>
-                </div>
-                <div className="line"></div>
-                <div className="text-1">
-                  <p>You should ask for: <span>{this.state.askAmount}</span></p>
-                  <p>Total Fee: <span>{this.state.totalFeeNew}</span></p>
-                  <p>You will receive: <span>{this.state.receiveAmountNew}</span></p>
-                </div>
-              </div>
             </form>
+
+          <div className="faq-section">
+            <h2>FAQs</h2>
+            <p>
+              <strong>Q:</strong> How do I use this calculator?
+            </p>
+            <p>
+              <strong>A:</strong> Simply enter your goal amount, percentage charge, and fixed charge.
+              Click "Calculate" to see the fee breakdown.
+            </p>
+            {/* Add more FAQs as needed */}
+          </div>
+
+          <div className="share-links">
+            <h2>Share This Page</h2>
+            {/* Add social media share links */}
+          </div>
         </div>
       </div>
     );
