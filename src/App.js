@@ -46,7 +46,7 @@ class App extends Component {
           <h1>Stripe Fee Calculator</h1>
           <p>
             Welcome to the Stripe Fee Calculator! Easily calculate fees for your transactions
-            using Stripe.
+            using Stripe. 
           </p>
           <p>
             This calculator helps you understand the fees associated with your transactions on
@@ -68,9 +68,10 @@ class App extends Component {
           <tbody>
           <tr>
             <th></th>
-            <th>Amount</th>
-            <th>Fee</th>
-            <th>Receive</th>
+            <th>Invoice Amount</th>
+            <th>Stripe fee</th>
+            <th>You will receive
+</th>
           </tr>
           <tr>
             <td>Old</td>
@@ -88,7 +89,7 @@ class App extends Component {
         </table>
 
             <form className="inpt-cont" onSubmit={(e)=>{e.preventDefault()}}>
-              <label>Goal Amount</label>
+              <label>Enter an invoice amount</label>
               <input 
               name='amount' 
               placeholder='Amount'
@@ -135,12 +136,33 @@ class App extends Component {
             {/* Add more FAQs as needed */}
           </div>
 
-          <div className="share-links">
+          <div className="share-section">
             <h2>Share This Page</h2>
             {/* Add social media share links */}
-          </div>
-        </div>
+            <div className="row-style">
+                <div className="share-btn">
+                  <img alt="facebook sharing button" src=""/>
+                </div>
+                <div className="share-btn">
+                  <img alt="twitter sharing button" src=""/>
+                </div>
+                <div className="share-btn">
+                  <img alt="pinterest sharing button" src=""/>
+                </div>
+                <div className="share-btn">
+                  <img alt="linkedin sharing button" src=""/>
+                </div>
+                <div className="share-btn">
+                  <img alt="reddit sharing button" src=""/>
+                </div>
+                <div className="share-btn">
+                  <img alt="email sharing button" src=""/>
+                </div>
+              </div>
       </div>
+      </div>
+      </div>
+
     );
   }
 }

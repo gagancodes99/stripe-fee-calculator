@@ -1,76 +1,102 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  box-sizing: border-box;
 }
-
 
 .App-header {
   background-color: #fff;
   min-height: 100vh;
+  font-size: calc(9px + 2vmin);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: #000;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
+  margin: 0 auto;
+  max-width: 45rem;
+  width: 100%;
+  padding: 0.5rem;
+  letter-spacing: 0.7px;
+}
+
+h1 {
+  margin-top: 4rem;
+}
+
+h2 {
+  margin-top: 5rem;
+}
+
+p {
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
 }
 
 .App-link {
   color: #61dafb;
 }
-.inpt-cont{
+
+.inpt-cont {
+  margin-top: 2rem;
   border: 2px #ccc solid;
-  border-radius:7px;
+  border-radius: 7px;
   display: grid;
   width: 92%;
-  max-width: 400px;
+  max-width: 600px;
   padding: 4% 4%;
-  margin-bottom:20px;
+  margin-bottom: 2rem;
 }
-.inpt-cont label{
-  font-size: 20px;
+.inpt-cont label {
+  /* font-size: 20px; */
+  font-size: calc(9px + 2vmin);
   margin-top: 10px;
   text-align: left;
   padding: 0 5px;
 }
-.inpt-cont input{
+.inpt-cont input {
   margin: 10px 0 10px 0;
   padding: 12px 15px;
   border-radius: 7px;
   border: 2px #ccc solid;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: calc(9px + 2vmin);
   /* background-color: transparent; */
   /* color: white;  */
-  outline: none ;
+  outline: none;
 }
-.inpt-cont button{
+.inpt-cont button {
   padding: 12px 15px;
   border-radius: 7px;
   margin: 10px 0;
-  font-size: 20px; 
+  /* font-size: 20px;  */
+  font-size: calc(9px + 2vmin);
   font-weight: bold;
+  letter-spacing: 0.7px;
   /* background-color: transparent; */
 }
-.calculate{
+.calculate {
   color: #fff;
   border: 2px #59adf7 solid;
-  background: #59adf7
+  background: #59adf7;
 }
-.reset{
+.reset {
   color: #fff;
   border: 2px #aaa solid;
-  background: #aaa
+  background: #aaa;
 }
 table {
+  margin-top: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   border-collapse: collapse;
-  margin-bottom: 20px;
-  border-radius: 8px; 
-  overflow: hidden; 
+  margin-bottom: 2rem;
+  /* border-radius: 8px;  */
+  overflow: hidden;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   border-radius: 7px;
   padding: 8px;
@@ -97,3 +123,29 @@ th {
   margin: auto;
 }
 
+.faq-section p {
+  text-align: left;
+}
+
+.row-style {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .App-header {
+    max-width: 96%;
+    align-items: start;
+  }
+
+  h1,
+  h2,
+  p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 378px) {
+  .App-header {
+    max-width: 90%;
+  }
+}
