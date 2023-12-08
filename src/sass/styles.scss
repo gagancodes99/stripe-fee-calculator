@@ -194,9 +194,12 @@ p {
           font-weight: 400;
           font-family: "Rubik", sans-serif;
           font-size: $base-font-size;
-          color: #374b58;
+          color: $text-color;
           box-sizing: border-box;
         }
+      }
+      &:hover {
+        box-shadow: 2px 2px 50px 0px rgba(0, 0, 0, 0.25);
       }
     }
   }
@@ -255,6 +258,13 @@ p {
     font-family: "Rubik", sans-serif;
     box-sizing: border-box;
     align-self: center;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.25);
+    }
+    &:active {
+      filter: drop-shadow(0px 0px 5px $primary-color);
+    }
   }
   .reset {
     border: none;
@@ -267,6 +277,16 @@ p {
     width: fit-content;
     margin: 0 auto;
     align-self: center;
+    &:hover {
+      cursor: pointer;
+      text-shadow: 0px 0px 24px rgba(0, 0, 0, 0.25);
+    }
+    &:active {
+      color: grey;
+    }
+  }
+  &:hover {
+    box-shadow: 2px 2px 50px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -306,6 +326,11 @@ p {
 
 .accordion-item {
   margin-bottom: 3.25rem;
+  transition: max-height 650ms ease;
+  -webkit-transition: max-height 0.7s ease;
+  -moz-transition: max-height 0.7s ease;
+  -o-transition: max-height 0.7s ease;
+  transition: max-height 0.7s ease;
   .accordion-link {
     &::before {
       content: "";
@@ -324,7 +349,7 @@ p {
     background: #dce7f9;
     font-size: 2rem;
     font-weight: 600;
-    color: #374b58;
+    color: $text-color;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -332,7 +357,7 @@ p {
 
     &:hover {
       cursor: pointer;
-      box-shadow: 5px 12px 54px 0px rgba(0, 0, 0, 0.25);
+      box-shadow: 5px 12px 54px 1px rgba(0, 0, 0, 0.15);
     }
   }
   .icon-remove {
@@ -340,11 +365,11 @@ p {
   }
 }
 
-.answer {
+.accordion-item .answer {
   max-height: 0;
   overflow: hidden;
   position: relative;
-  transition: max-height 650ms;
+  transition: max-height 650ms ease;
   border-radius: 1px 1px 126px 0px;
   background: #f3f3f3;
   p {
@@ -352,11 +377,11 @@ p {
     text-align: left;
     color: $text-color;
     font-weight: 300;
-    &:hover {
-      cursor: pointer;
-      box-shadow: 5px 12px 54px 0px rgba(0, 0, 0, 0.25);
-    }
   }
+  // &:hover {
+  //   cursor: pointer;
+  //   box-shadow: 5px 12px 154px 0px rgba(0, 0, 0, 0.25);
+  // }
 }
 .accordion-item:target {
   .answer {
@@ -405,14 +430,18 @@ p {
       width: 100%;
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       font-size: 1rem;
       justify-content: center;
       gap: 4vw;
     }
 
     .share-btn img {
-      width: 4.5rem;
+      width: 3rem;
+      &:hover {
+        cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.25);
+      }
     }
   }
 }
@@ -420,6 +449,10 @@ p {
 @media (max-width: 768px) {
   .content {
     padding: 0 5%;
+  }
+  .section-fee .content .input-cont {
+    // width: 100%;
+    padding: 2.25rem 9vmin;
   }
   .section-fee .sub-content .calculations {
     width: 92%;
@@ -442,8 +475,13 @@ p {
       font-size: calc($base-font-size - 30%);
     }
   }
-  .accordion-item .accordion-link {
-    font-size: calc(1.2rem);
+  .accordion-item {
+    .accordion-link {
+      font-size: calc(1.2rem);
+    }
+    .answer p {
+      padding-right: 3rem;
+    }
   }
   .section-fee .sub-content .calculations .cal {
     h3,

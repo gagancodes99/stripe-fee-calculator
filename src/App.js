@@ -240,24 +240,24 @@ class App extends Component {
               <div className="gradient-line"></div>
               {/* Add social media share links */}
               <div className="row-style">
-                <div className="share-btn">
+                <a href="#" className="share-btn">
                   <img src={facebookLogo} alt="facebook sharing button" />
-                </div>
-                <div className="share-btn">
+                </a>
+                <a href="#" className="share-btn">
                   <img src={twitterLogo} alt="twitter sharing button" />
-                </div>
-                <div className="share-btn">
+                </a>
+                <a className="share-btn">
                   <img src={pinterestLogo} alt="pinterest sharing button" />
-                </div>
-                <div className="share-btn">
+                </a>
+                <a href="#" className="share-btn">
                   <img src={linkedinLogo} alt="linkedin sharing button" />
-                </div>
-                <div className="share-btn">
+                </a>
+                <a href="#" className="share-btn">
                   <img src={redditLogo} alt="reddit sharing button" />
-                </div>
-                <div className="share-btn">
+                </a>
+                <a href="#" className="share-btn">
                   <img src={emailLogo} alt="email sharing button" />
-                </div>
+                </a>
               </div>
             </div>
           </div>
