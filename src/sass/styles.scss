@@ -10,8 +10,16 @@ $white: #ffffff;
 $reset-btn-color: #77b6f3;
 $input-bg-color: #fffcfc;
 
+// font-size
+$base-font-size: 1.5rem;
+$h1-font-size: 3.75rem;
+$h2-font-size: 3.25rem;
+
 .App {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .App-wrapper {
@@ -38,13 +46,15 @@ h2 {
 }
 
 h1 {
-  font-size: 3.75rem;
+  font-size: $h1-font-size;
 }
 h2 {
-  font-size: 3.25rem;
+  font-size: $h2-font-size;
 }
 
 p {
+  font-size: $base-font-size;
+  line-height: 1.7;
   font-weight: 400;
 }
 
@@ -61,10 +71,6 @@ p {
       span {
         color: $primary-color;
       }
-    }
-    p {
-      font-size: 1.5rem;
-      line-height: 1.8;
     }
   }
 }
@@ -100,8 +106,6 @@ p {
       margin-top: 1rem;
     }
     p {
-      font-size: 1.5rem;
-      line-height: 1.8;
       margin-bottom: 2.5rem;
     }
     .svg {
@@ -118,12 +122,13 @@ p {
   flex-direction: column;
   align-items: center;
   .content {
-    width: 100%;
-    max-width: 52rem;
+    width: 98%;
+    max-width: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     h2 {
       span {
         color: $primary-color;
@@ -143,8 +148,6 @@ p {
       margin-top: 1rem;
     }
     p {
-      font-size: 1.5rem;
-      line-height: 1.7;
       margin-bottom: 2rem;
     }
   }
@@ -156,34 +159,55 @@ p {
   //   }
 
   .sub-content {
-    width: 80%;
-    max-width: 59.5rem;
+    width: 96%;
+    max-width: 46rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     .calculations {
+      align-self: center;
+      background: #dce7f9;
       width: 100%;
       display: flex;
-      padding: 3.75rem 3.5rem;
+      padding: 3.25rem 6vmin;
+      box-sizing: border-box;
       justify-content: space-between;
-      align-items: center;
-      gap: 10px;
+      gap: 1rem;
       border-radius: 12px;
-      background: #dce7f9;
-      h3 {
-        font-size: 2rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-      }
-      span {
-        // padding-left: 5px;
-        font-weight: 400;
-        font-family: "Rubik", sans-serif;
-        font-size: 2rem;
-        color: #374b58;
+      .cal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        h3 {
+          font-size: $base-font-size;
+          font-weight: 400;
+          margin-bottom: 0.8rem;
+          text-align: left;
+          box-sizing: border-box;
+        }
+        span {
+          // padding-left: 5px;
+          font-weight: 400;
+          font-family: "Rubik", sans-serif;
+          font-size: $base-font-size;
+          color: #374b58;
+          box-sizing: border-box;
+        }
       }
     }
+  }
+}
+@media (max-width: 500px) {
+  .section-fee .sub-content .calculations {
+    flex-direction: column;
+    // align-items: center;
+    // .cal {
+    //   flex-direction: row;
+    // }
   }
 }
 
@@ -192,51 +216,57 @@ p {
   background-color: $cal-color;
   border-radius: 12px;
   width: 100%;
-  display: grid;
-  padding: 2.7rem;
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  box-sizing: border-box;
   margin-bottom: 4.875rem;
   label {
     color: $text-color;
-    font-size: 2rem;
+    font-size: $base-font-size;
     // padding: 0 5px;
-    margin-bottom: 1.375rem;
+    margin-bottom: 1rem;
   }
   input {
     margin-bottom: 2rem;
-    padding: 1.5rem 1.5rem 1.5rem 2.625rem;
+    padding: 1rem 1rem 1rem 2.625rem;
     border: 2px $input-bg-color solid;
     border-radius: 14px;
     background: $input-bg-color;
     outline: none;
     font-family: "Rubik", sans-serif;
-    font-size: 2rem;
+    font-size: $base-font-size;
     font-weight: 400;
     color: $text-color;
+    box-sizing: border-box;
   }
 
   .calculate {
     width: fit-content;
-    margin: 0 auto;
+    // margin: 0 auto;
     color: $white;
-    font-size: 2rem;
+    font-size: $base-font-size;
     border: none;
     border-radius: 50px;
     background: $primary-color;
     margin-bottom: 2rem;
-    padding: 2rem 5.25rem;
+    padding: 1.1rem 12vmin;
     font-weight: 400;
     font-family: "Rubik", sans-serif;
+    box-sizing: border-box;
+    align-self: center;
   }
   .reset {
     border: none;
     background: transparent;
     color: $reset-btn-color;
     font-family: "Rubik", sans-serif;
-    font-size: 1.7rem;
+    font-size: $base-font-size;
     font-weight: 500;
     border-bottom: 2px solid;
     width: fit-content;
     margin: 0 auto;
+    align-self: center;
   }
 }
 
@@ -321,9 +351,7 @@ p {
     padding: 2.4rem 6rem 2.4rem 3rem;
     text-align: left;
     color: $text-color;
-    font-size: 1.5rem;
     font-weight: 300;
-    line-height: 2.8rem;
     &:hover {
       cursor: pointer;
       box-shadow: 5px 12px 54px 0px rgba(0, 0, 0, 0.25);
@@ -341,11 +369,6 @@ p {
     display: block;
   }
 }
-
-// .accordion-item:target .share-section {
-//   width: 100%;
-//   margin-bottom: 2rem;
-// }
 
 .section-share {
   background-color: $bg-color;
@@ -365,7 +388,6 @@ p {
       span {
         color: $primary-color;
       }
-      margin-bottom: 0.5rem;
     }
     .gradient-line {
       width: 108px;
@@ -383,11 +405,10 @@ p {
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
       font-size: 1rem;
       justify-content: center;
-      gap: 3.6rem;
+      gap: 4vw;
     }
 
     .share-btn img {
@@ -398,34 +419,39 @@ p {
 
 @media (max-width: 768px) {
   .content {
-    padding: 0 2%;
+    padding: 0 5%;
+  }
+  .section-fee .sub-content .calculations {
+    width: 92%;
+    padding: 2.25rem 9vmin;
+  }
+  h1 {
+    font-size: calc($h1-font-size - 60%);
+  }
+  h2 {
+    font-size: calc($h2-font-size - 60%);
+  }
+  p {
+    font-size: calc($base-font-size - 30%);
+  }
+  .input-cont {
+    label,
+    input,
+    .reset,
+    .calculate {
+      font-size: calc($base-font-size - 30%);
+    }
+  }
+  .accordion-item .accordion-link {
+    font-size: calc(1.2rem);
+  }
+  .section-fee .sub-content .calculations .cal {
+    h3,
+    span {
+      font-size: calc($base-font-size - 30%);
+    }
+  }
+  .section-share .content .share-btn img {
+    width: 2.25rem;
   }
 }
-
-// @media (max-width: 378px) {
-//   .App-wrapper {
-//     max-width: 90%;
-//   }
-// }
-
-// .faq {
-//   border: 1px solid #ccc;
-//   margin-bottom: 10px;
-// }
-// .faq h2 {
-//   margin: 0;
-//   padding: 10px;
-//   background-color: #f5f5f5;
-//   cursor: pointer;
-// }
-// .faq p {
-//   margin: 0;
-//   padding: 10px;
-//   display: none;
-// }
-// .faq h2.active {
-//   background-color: #000;
-// }
-// .faq h2.active + p {
-//   display: block;
-// }
