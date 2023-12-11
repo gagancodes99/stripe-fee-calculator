@@ -110,6 +110,8 @@ p {
     }
     .svg {
       width: 100%;
+      max-width: 400px;
+      margin: 30px auto;
     }
   }
 }
@@ -122,7 +124,7 @@ p {
   flex-direction: column;
   align-items: center;
   .content {
-    width: 98%;
+    width: 100%;
     max-width: 40rem;
     display: flex;
     flex-direction: column;
@@ -159,7 +161,7 @@ p {
   //   }
 
   .sub-content {
-    width: 96%;
+    width: 100%;
     max-width: 46rem;
     display: flex;
     flex-direction: column;
@@ -326,11 +328,11 @@ p {
 
 .accordion-item {
   margin-bottom: 3.25rem;
-  transition: max-height 650ms ease;
-  -webkit-transition: max-height 0.7s ease;
-  -moz-transition: max-height 0.7s ease;
-  -o-transition: max-height 0.7s ease;
-  transition: max-height 0.7s ease;
+  // transition: max-height 650ms ease;
+  // -webkit-transition: max-height 0.7s ease;
+  // -moz-transition: max-height 0.7s ease;
+  // -o-transition: max-height 0.7s ease;
+  // transition: max-height 0.7s ease;
   .accordion-link {
     &::before {
       content: "";
@@ -447,17 +449,74 @@ p {
 }
 
 @media (max-width: 768px) {
-  .content {
+  .content,
+  .sub-content {
     padding: 0 5%;
   }
-  .section-fee .content .input-cont {
-    // width: 100%;
-    padding: 2.25rem 9vmin;
+  .header,
+  .section-fee {
+    padding: 3rem 0;
   }
-  .section-fee .sub-content .calculations {
-    width: 92%;
-    padding: 2.25rem 9vmin;
+  .section {
+    padding: 3rem 0 0 0;
+    .content {
+      .gradient-line {
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      .svg {
+        padding: 2vw 0;
+      }
+    }
   }
+  .section-fee {
+    .content {
+      .gradient-line {
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        margin-bottom: 1.5rem;
+      }
+      .input-cont {
+        margin-bottom: 3rem;
+        padding: 1.5rem 6vmin;
+        label,
+        input,
+        .reset,
+        .calculate {
+          font-size: calc($base-font-size - 30%);
+        }
+        label {
+          margin-bottom: 0.5rem;
+        }
+        input {
+          margin-bottom: 1.5rem;
+        }
+        .calculate {
+          padding: 0.8rem 9vmin;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    .sub-content {
+      .calculations {
+        // padding: 2.25rem 9vmin;
+        padding: 1.5rem 6vmin;
+
+        .cal {
+          h3,
+          span {
+            font-size: calc($base-font-size - 30%);
+          }
+        }
+      }
+    }
+  }
+
   h1 {
     font-size: calc($h1-font-size - 60%);
   }
@@ -467,14 +526,7 @@ p {
   p {
     font-size: calc($base-font-size - 30%);
   }
-  .input-cont {
-    label,
-    input,
-    .reset,
-    .calculate {
-      font-size: calc($base-font-size - 30%);
-    }
-  }
+
   .accordion-item {
     .accordion-link {
       font-size: calc(1.2rem);
@@ -483,13 +535,21 @@ p {
       padding-right: 3rem;
     }
   }
-  .section-fee .sub-content .calculations .cal {
-    h3,
-    span {
-      font-size: calc($base-font-size - 30%);
-    }
+  .section-faq {
+    padding: 2rem 0;
   }
-  .section-share .content .share-btn img {
-    width: 2.25rem;
+  .section-share {
+    padding: 2rem 0;
+    .content {
+      h2 {
+        margin-bottom: 0.5rem;
+      }
+      .gradient-line {
+        margin-bottom: 2.5rem;
+      }
+      .share-btn img {
+        width: 2.25rem;
+      }
+    }
   }
 }
