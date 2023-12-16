@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/stripe-fee-calculator/static/css/main.0e1f92d1.css",
-    "main.js": "/stripe-fee-calculator/static/js/main.6a6450b6.js",
+    "main.css": "/stripe-fee-calculator/static/css/main.88299fdb.css",
+    "main.js": "/stripe-fee-calculator/static/js/main.cb5b5af1.js",
     "static/js/787.f2eee958.chunk.js": "/stripe-fee-calculator/static/js/787.f2eee958.chunk.js",
+    "static/media/how-it-works.svg": "/stripe-fee-calculator/static/media/how-it-works.b839793d13d952af781b2336cf489fcb.svg",
     "index.html": "/stripe-fee-calculator/index.html",
-    "main.0e1f92d1.css.map": "/stripe-fee-calculator/static/css/main.0e1f92d1.css.map",
-    "main.6a6450b6.js.map": "/stripe-fee-calculator/static/js/main.6a6450b6.js.map",
+    "static/media/add_FILL0_wght400_GRAD0_opsz24.svg": "/stripe-fee-calculator/static/media/add_FILL0_wght400_GRAD0_opsz24.3be0ea4ac64cead2bf9590910d375914.svg",
+    "static/media/remove_FILL0_wght400_GRAD0_opsz24.svg": "/stripe-fee-calculator/static/media/remove_FILL0_wght400_GRAD0_opsz24.f28c3bd79730c23529eb56e15589159b.svg",
+    "main.88299fdb.css.map": "/stripe-fee-calculator/static/css/main.88299fdb.css.map",
+    "main.cb5b5af1.js.map": "/stripe-fee-calculator/static/js/main.cb5b5af1.js.map",
     "787.f2eee958.chunk.js.map": "/stripe-fee-calculator/static/js/787.f2eee958.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e1f92d1.css",
-    "static/js/main.6a6450b6.js"
+    "static/css/main.88299fdb.css",
+    "static/js/main.cb5b5af1.js"
   ]
 }
