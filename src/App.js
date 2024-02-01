@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "./sass/styles.scss";
 import facebookLogo from "./assets/facebook.png";
 import twitterLogo from "./assets/twitter.png";
@@ -59,9 +59,7 @@ class App extends Component {
                 <span>Stripe</span> fee calculator
               </h1>
               <p>
-                Welcome to the Stripe Fee Calculator! Easily calculate fees for
-                your transactions using Stripe. This calculator helps you
-                understand the fees associated with your transactions on Stripe.
+              Welcome to the Stripe Fee Calculator! This tool empowers you to effortlessly calculate fees associated with your transactions on Stripe. Whether you're a business owner, freelancer, or anyone using Stripe for payment processing, this calculator helps you gain insights into the fees for your transactions. Let's explore how it works and how you can make the most of it.
               </p>
             </div>
           </div>
@@ -73,10 +71,7 @@ class App extends Component {
               </h2>
               <div className="gradient-line"></div>
               <p>
-                Enter your goal amount, the percentage charge, and the fixed
-                charge.
-                <br /> Click "Calculate" to see the fee breakdown for both old
-                and new transactions.
+              To get started, simply enter your goal amount, the percentage charge, and the fixed charge in the form below. Click "Calculate" to see a detailed breakdown of fees for both old and new transactions. The visual representation explains the process step by step, making it easy for you to understand and optimize your transactions.
               </p>
               <HowItWorks className="svg" />
             </div>
@@ -90,7 +85,8 @@ class App extends Component {
               <div className="gradient-line"></div>
               <p>
                 The fee is calculated using the formula: <br />
-                <code>(amount * percent / 100) + fixed</code>.
+                <p>Amount to ask: (goal_amount + fixed) / (1 - percent/100)</p>
+                <p>Stripe Fee: askAmount * (percent / 100) + fixed</p>
               </p>
 
               {/* <div className="form-wrapper"> */}
