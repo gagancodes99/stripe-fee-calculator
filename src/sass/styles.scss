@@ -232,7 +232,7 @@ p {
     // padding: 0 5px;
     margin-bottom: 1rem;
   }
-  input {
+  input ,select {
     margin-bottom: 2rem;
     padding: 1rem;
     border: 2px $input-bg-color solid;
@@ -291,6 +291,21 @@ p {
     box-shadow: 2px 2px 50px 0px rgba(0, 0, 0, 0.25);
   }
 }
+.btn-check:checked + .btn {
+  border-color: #8A2BE2;
+  padding:8px ;
+   /* Change this to your desired border color */
+}
+.btn-check {
+  // position: absolute;
+
+  opacity: 0;
+}
+.btn {
+  padding: 8px;
+  border: 1px solid transparent;
+ 
+}
 
 .section-faq {
   background-color: $white;
@@ -325,6 +340,47 @@ p {
     }
   }
 }
+/* NavBar.css */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: #1f211c;
+}
+.nav-item{
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  padding: 18px;
+  
+  // border: 1px solid rgb(171, 171, 218);
+  display: flex;
+  justify-content: space-evenly;
+  // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.form-control {
+  width: auto; 
+}
+
+.btn-outline-success {
+  color: #fff;
+  border-color: #28a745;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
 
 .accordion-item {
   margin-bottom: 3.25rem;

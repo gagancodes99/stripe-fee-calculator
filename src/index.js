@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, RouterProvider } from 'react-router-dom';
+import { router } from './Router/NavLinkRouter';
+import Main from './Main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}>
+    <Main />
+    </RouterProvider>
   </React.StrictMode>
 );
 
