@@ -294,7 +294,8 @@ p {
 .btn-check:checked + .btn {
   border-color: #8A2BE2;
   padding:8px ;
-   /* Change this to your desired border color */
+  border-radius: 5px;
+
 }
 .btn-check {
   // position: absolute;
