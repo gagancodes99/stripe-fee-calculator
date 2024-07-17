@@ -80,17 +80,21 @@ useEffect(()=>{
             <span>Tax</span> Calculation
           </h2>
           <div className="gradient-line"></div>
-          <p>
-            The inclusive tax is calculated using the formula:  <span style={{color:"#8A2BE2",fontWeight:'bold'}}>Inclusive</span> <br />
+          <div>
+            <p>
+            The inclusive tax is calculated using the formula:  <span style={{color:"#8A2BE2",fontWeight:'bold'}}>Inclusive</span>
+            </p>
+             <br />
             <p>totalAmount * tax_percentage / 100 + tax_percentage  </p>
             
-          </p>
+          </div>
           <br />
+          <div>
           <p>
-            The exclusive tax is calculated using the formula:  <span style={{color:"#8A2BE2",fontWeight:'bold'}}>Exclusive</span> <br />
+            The exclusive tax is calculated using the formula:  <span style={{color:"#8A2BE2",fontWeight:'bold'}}>Exclusive</span> </p><br />
             <p>totalAmount * tax_percentage / 100 </p>
             
-          </p>
+          </div>
 
           <form
             className="input-cont"
@@ -101,20 +105,20 @@ useEffect(()=>{
 
 
 
-            <label class="input-group-text">Select tax behaviour</label>
+            <label className="input-group-text">Select tax behaviour</label>
             <div style={{ display: "flex", width: "100%", justifyContent: "space-around" }}>
-              <div class="form-check">
+              <div className="form-check">
 
-                <input type="radio" class="btn-check" name="card" id="Radios1" value="inclusive" defaultChecked onChange={(e) => handleCardChange(e)} />
-                <label class="btn btn-secondary" for="Radios1" >
+                <input type="radio" className="btn-check" name="card" id="Radios1" value="inclusive" defaultChecked onChange={(e) => handleCardChange(e)} />
+                <label className="btn btn-secondary" htmlFor="Radios1" >
                   Inclusive
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
 
-                <input cla type="radio" class="btn-check" name="card" id="Radios2" value="exclusive" onChange={(e) => handleCardChange(e)} />
-                <label class="btn btn-secondary" for="Radios2" >
+                <input type="radio" className="btn-check" name="card" id="Radios2" value="exclusive" onChange={(e) => handleCardChange(e)} />
+                <label className="btn btn-secondary" htmlFor="Radios2" >
                   Exclusive
                 </label>
 

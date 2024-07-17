@@ -193,11 +193,13 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
               <span>Fee</span> calculation formula
             </h2>
             <div className="gradient-line"></div>
+            <div>
             <p>
-              The fee is calculated using the formula: <br />
+              The fee is calculated using the formula: <br />  </p>
               <p>Amount to ask: (goal_amount + fixed) / (1 - percent/100)</p>
               <p>Stripe Fee: askAmount * (percent / 100) + fixed</p>
-            </p>
+           
+            </div>
 
             <form
               className="input-cont"
@@ -205,28 +207,28 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
                 e.preventDefault();
               }}
             >
-              <label class="input-group-text">Select country</label>
+              <label className="input-group-text">Select country</label>
 
-              <select class="form-select" id="inputGroupSelect01" onChange={(e) => handleCountryChange(e)}>
+              <select className="form-select" id="inputGroupSelect01" onChange={(e) => handleCountryChange(e)}>
 
                 {countries?.map((ele) => (
                   <option value={ele.name} key={ele.code}>{ele.name}</option>
                 ))}
               </select>
-              <label class="input-group-text">Select Card</label>
+              <label className="input-group-text">Select Card</label>
               <div style={{ display: "flex", width: "100%", justifyContent: "space-around" }}>
-                <div class="form-check">
+                <div className="form-check">
 
-                  <input  type="radio" class="btn-check"  name="card" id="exampleRadios1" value="domestic" defaultChecked onChange={(e) => handleCardChange(e)} />
-                  <label  class="btn btn-secondary" for="exampleRadios1" >
+                  <input  type="radio" className="btn-check"  name="card" id="exampleRadios1" value="domestic" defaultChecked onChange={(e) => handleCardChange(e)} />
+                  <label  className="btn btn-secondary" htmlFor="exampleRadios1" >
                     Domestic Card
                   </label>
                 </div>
 
-                <div class="form-check">
+                <div className="form-check">
 
-                  <input cla type="radio" class="btn-check"  name="card" id="exampleRadios2" value="international" onChange={(e) => handleCardChange(e)} />
-                  <label  class="btn btn-secondary" for="exampleRadios2" >
+                  <input  type="radio" className="btn-check"  name="card" id="exampleRadios2" value="international" onChange={(e) => handleCardChange(e)} />
+                  <label  className="btn btn-secondary" htmlFor="exampleRadios2" >
                     International Card
                   </label>
               
