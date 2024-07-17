@@ -24,6 +24,9 @@ const reducer = (state, action) => {
       // console.log(action.payload)
       return {...state, Tax_Behaviour:action.payload }
     }
+    case "RESET":{
+    return {...state,taxResult:""}
+    }
     case "CALCULATE": {
       // console.log(state.Tax_Percentage)
       if(state.Tax_Behaviour=="inclusive"){
@@ -52,8 +55,10 @@ function TaxCalculator() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const handleCardChange = (e) => { 
-    console.log(e.target.value)
+    // console.log(e.target.value)
     dispatch({type:"SET_TAX_BEHAVIOUR", payload:e.target.value})
+
+    dispatch({type:"RESET"})
   }
 
   const calculate = () => {
@@ -137,7 +142,7 @@ useEffect(()=>{
               name="percent"
               placeholder="Percent charge"
               type="range"
-              min={0.1}
+              min={0}
               step={0.1}
               max={100}
               value={state.Tax_Percentage}

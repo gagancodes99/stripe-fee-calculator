@@ -31,7 +31,7 @@ const reducer = (state, action) => {
     case "SELECT_COUNTRY": {
 
       const selected_country = countries.find((ele) => ele.name === action.payload);
-      console.log(state.selected_card, "**********", selected_country)
+      // console.log(state.selected_card, "**********", selected_country)
       if (state.selected_card == "domestic") {
         return {
           ...state,
@@ -53,7 +53,7 @@ const reducer = (state, action) => {
 
     }
     case "SELECT_CARD": {
-      console.log(action.payload);
+      // console.log(action.payload);
       return { ...state, selected_card: action.payload }
     }
     case "SET_GOAL": {
