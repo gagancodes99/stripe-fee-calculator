@@ -4,7 +4,7 @@
             "code": "US",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 1.9,
+                    "percentage_fee": 2.9,
                     "fixed_fee": 0.30
                 },
                 "international": {
@@ -35,12 +35,12 @@
             "code": "GB",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.20
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.20,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -50,11 +50,11 @@
             "code": "AU",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
+                    "percentage_fee": 1.70,
                     "fixed_fee": 0.30
                 },
                 "international": {
-                    "percentage_fee": 3.9,
+                    "percentage_fee": 3.5,
                     "fixed_fee": 0.30,
                     "currency_conversion_fee": 1.0
                 }
@@ -65,12 +65,12 @@
             "code": "DE",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.25
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.25,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -80,12 +80,12 @@
             "code": "FR",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.25
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.25,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -95,12 +95,12 @@
             "code": "JP",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 3.6,
+                    "fixed_fee": 0.00
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 3.6,
+                    "fixed_fee": 0.00,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -110,12 +110,12 @@
             "code": "IT",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.25
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.25,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -125,12 +125,12 @@
             "code": "ES",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.25
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.25,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -140,12 +140,12 @@
             "code": "NL",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 1.5,
+                    "fixed_fee": 0.25
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 2.5,
+                    "fixed_fee": 0.25,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -155,12 +155,12 @@
             "code": "BR",
             "fees": {
                 "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
+                    "percentage_fee": 3.99,
+                    "fixed_fee": 0.39
                 },
                 "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "percentage_fee": 3.99,
+                    "fixed_fee": 0.39,
                     "currency_conversion_fee": 1.0
                 }
             }
@@ -171,161 +171,11 @@
             "fees": {
                 "domestic": {
                     "percentage_fee": 2,
-                    "fixed_fee": 0.30
+                    "fixed_fee": 0.00
                 },
                 "international": {
                     "percentage_fee": 3,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Russia",
-            "code": "RU",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "China",
-            "code": "CN",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "South Korea",
-            "code": "KR",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Mexico",
-            "code": "MX",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Indonesia",
-            "code": "ID",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Turkey",
-            "code": "TR",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Saudi Arabia",
-            "code": "SA",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Switzerland",
-            "code": "CH",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Sweden",
-            "code": "SE",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
-                    "currency_conversion_fee": 1.0
-                }
-            }
-        },
-        {
-            "name": "Belgium",
-            "code": "BE",
-            "fees": {
-                "domestic": {
-                    "percentage_fee": 2.9,
-                    "fixed_fee": 0.30
-                },
-                "international": {
-                    "percentage_fee": 3.9,
-                    "fixed_fee": 0.30,
+                    "fixed_fee": 0.00,
                     "currency_conversion_fee": 1.0
                 }
             }
