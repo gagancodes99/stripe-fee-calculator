@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import NavBar from '../components/NavBar'
 
 
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
     }
     case "CALCULATE": {
       // console.log(state.Tax_Percentage)
-      if(state.Tax_Behaviour=="inclusive"){
+      if(state.Tax_Behaviour==="inclusive"){
         const inclusiveTax = Number(state.amount - (state.amount / (1 + (state.Tax_Percentage / 100)))).toFixed(2);
       return {
         ...state, taxResult: inclusiveTax
@@ -165,7 +165,7 @@ useEffect(()=>{
         <div className="sub-content">
             <div className="calculations">
               <div className="cal flex">
-                <h3>{state.Tax_Behaviour=="inclusive"?"Inclusive": "Exclusive"}</h3>
+                <h3>{state.Tax_Behaviour==="inclusive"?"Inclusive": "Exclusive"}</h3>
                 <span> ${state.amount} has {state.Tax_Behaviour} tax of  ${state.taxResult} </span>
               </div>
              

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./sass/styles.scss";
 import facebookLogo from "./assets/facebook.png";
 import twitterLogo from "./assets/twitter.png";
@@ -32,7 +32,7 @@ const reducer = (state, action) => {
 
       const selected_country = countries.find((ele) => ele.name === action.payload);
       // console.log(state.selected_card, "**********", selected_country)
-      if (state.selected_card == "domestic") {
+      if (state.selected_card === "domestic") {
         return {
           ...state,
           Country: action.payload,
