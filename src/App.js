@@ -7,24 +7,24 @@ import linkedinLogo from "./assets/linkedin.png";
 import redditLogo from "./assets/reddit.png";
 import emailLogo from "./assets/email.png";
 import pinterestLogo from "./assets/pinterest.png";
-import addIcon from "./assets/add_FILL0_wght400_GRAD0_opsz24.svg";
-import removeIcon from "./assets/remove_FILL0_wght400_GRAD0_opsz24.svg";
 import { ReactComponent as HowItWorks } from "./assets/how-it-works.svg";
 import countries from "./db.json"
-import NavBar from "./components/NavBar";
 
+const initialCountry = countries[0];
 const initialState = {
   selected_card: "domestic",
-  Country: countries[0].name,
+  country: initialCountry.name,
   askAmount: 0.0,
   totalFeeNew: 0.0,
   receiveAmountNew: 0.0,
   receiveAmountOld: 0.0,
   totalFeeOld: 0.0,
   goal: 0.0,
-  percent: 0.0,
-  fixed: 0.0,
+  percent: initialCountry.fees?.domestic?.percentage_fee ?? 0,
+  fixed: initialCountry.fees?.domestic?.fixed_fee ?? 0,
 };
+
+const formattedNumber = (num) => Number(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -35,7 +35,7 @@ const reducer = (state, action) => {
       if (state.selected_card === "domestic") {
         return {
           ...state,
-          Country: action.payload,
+          country: action.payload,
           percent: selected_country.fees?.domestic?.percentage_fee ?? 0,
           fixed: selected_country.fees?.domestic.fixed_fee ?? 0
 
@@ -44,7 +44,7 @@ const reducer = (state, action) => {
       } else {
         return {
           ...state,
-          Country: action.payload,
+          country: action.payload,
           percent: selected_country.fees?.international?.percentage_fee ?? 0,
           fixed: selected_country.fees?.international.fixed_fee ?? 0
         }
@@ -67,41 +67,36 @@ const reducer = (state, action) => {
       return { ...state, fixed: action.payload }
     }
     case "CALCULATE": {
-      // Parse state values as floats
-      const goal = parseFloat(state.goal);
-      const percent = parseFloat(state.percent);
-      const fixed = parseFloat(state.fixed);
-
-      // Check if inputs are valid numbers
-      if (isNaN(goal) || isNaN(percent) || isNaN(fixed)) {
+      const goal = parseFloat(state.goal) || 0;
+      const percent = parseFloat(state.percent) || 0;
+      const fixed = parseFloat(state.fixed) || 0;
+    
+      if (goal === 0 || percent < 0 || fixed < 0) {
         console.error("Invalid input values");
-        return state; // Return current state if inputs are invalid
+        return state;
       }
-
-      // Calculate new values
+    
       const divisor = 1 - percent / 100;
       if (divisor === 0) {
         console.error("Division by zero error");
-        return state; // Return current state if division by zero would occur
+        return state;
       }
-
+    
       const askAmount = (goal + fixed) / divisor;
       const totalFeeNew = askAmount * (percent / 100) + fixed;
       const receiveAmountNew = askAmount - totalFeeNew;
       const totalFeeOld = goal * (percent / 100) + fixed;
       const receiveAmountOld = goal - totalFeeOld;
-
-      // Update state with formatted values
+    
       return {
         ...state,
-        askAmount: askAmount.toFixed(2),
-        totalFeeNew: totalFeeNew.toFixed(2),
-        receiveAmountNew: receiveAmountNew.toFixed(2),
-        totalFeeOld: totalFeeOld.toFixed(2),
-        receiveAmountOld: receiveAmountOld.toFixed(2),
+        askAmount: formattedNumber(askAmount),
+        totalFeeNew: formattedNumber(totalFeeNew),
+        receiveAmountNew: formattedNumber(receiveAmountNew),
+        totalFeeOld: formattedNumber(totalFeeOld),
+        receiveAmountOld: formattedNumber(receiveAmountOld),
       };
     }
-
     case "RESET": {
       return initialState;
     }
@@ -115,12 +110,11 @@ const reducer = (state, action) => {
 const App = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  // console.log(state)
+  // console.log()
 
 
 
   const calculate = () => {
-
     dispatch({ type: "CALCULATE" })
   };
   const handleCountryChange = (e) => {
@@ -128,30 +122,21 @@ const App = () => {
     dispatch({ type: "SELECT_COUNTRY", payload: e.target.value })
   }
   const handleCardChange = (e) => {
-    // console.log(state.Country)
-    
-    dispatch({ type: "SELECT_CARD", payload: e.target.value })
-    dispatch({ type: "SELECT_COUNTRY", payload: state.Country })
-    // console.log(e.target.value)
-  }
+    dispatch({ type: "SELECT_CARD", payload: e.target.value });
+  };
+  
 
   const reset = () => {
     // setState(initialState);
     dispatch({ type: "RESET" })
   };
   useEffect(() => {
-
-
-  }, [state]);
-  useEffect(() => {
-
-dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
+    dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
   }, []);
 
 
   return (
     <div className="App">
-            <NavBar />
       <div className="App-wrapper">
         <div className="header">
           <div className="content">
@@ -174,7 +159,6 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
             <h2>
               <span>How</span> it works
             </h2>
-            <div className="gradient-line"></div>
             <p>
               To get started, simply enter your goal amount, the percentage
               charge, and the fixed charge in the form below. Click "Calculate"
@@ -192,7 +176,6 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
             <h2>
               <span>Fee</span> calculation formula
             </h2>
-            <div className="gradient-line"></div>
             <div>
             <p>
               The fee is calculated using the formula: <br />  </p>
@@ -200,7 +183,22 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
               <p>Stripe Fee: askAmount * (percent / 100) + fixed</p>
            
             </div>
-
+            <div className="sub-content">
+            <div className="calculations">
+              <div className="cal">
+                <h3>Ask</h3>
+                <span>{state?.askAmount}</span>
+              </div>
+              <div className="cal">
+                <h3>Fee</h3>
+                <span>{state.totalFeeNew}</span>
+              </div>
+              <div className="cal">
+                <h3>Receive</h3>
+                <span>{state.receiveAmountNew}</span>
+              </div>
+            </div>
+          </div>
             <form
               className="input-cont"
               onSubmit={(e) => {
@@ -215,13 +213,13 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
                   <option value={ele.name} key={ele.code}>{ele.name}</option>
                 ))}
               </select>
-              <label className="input-group-text">Select Card</label>
+              {/* <label className="input-group-text">Select Card</label>
               <div style={{ display: "flex", width: "100%", justifyContent: "space-around" }}>
                 <div className="form-check">
 
                   <input  type="radio" className="btn-check"  name="card" id="exampleRadios1" value="domestic" defaultChecked onChange={(e) => handleCardChange(e)} />
                   <label  className="btn btn-secondary" htmlFor="exampleRadios1" >
-                    Domestic Card
+                    Domestic
                   </label>
                 </div>
 
@@ -229,12 +227,12 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
 
                   <input  type="radio" className="btn-check"  name="card" id="exampleRadios2" value="international" onChange={(e) => handleCardChange(e)} />
                   <label  className="btn btn-secondary" htmlFor="exampleRadios2" >
-                    International Card
+                    International
                   </label>
               
                 </div>
                 
-              </div>
+              </div> */}
 
 
 
@@ -287,60 +285,12 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
               </button>
             </form>
           </div>
-          <div className="sub-content">
-            <div className="calculations">
-              <div className="cal">
-                <h3>You should ask for</h3>
-                <span>{state?.askAmount}</span>
-              </div>
-              <div className="cal">
-                <h3>Stripe fees</h3>
-                <span>{state.totalFeeNew}</span>
-              </div>
-              <div className="cal">
-                <h3>You will receive</h3>
-                <span>{state.receiveAmountNew}</span>
-              </div>
-            </div>
-          </div>
+         
         </div>
 
-        <div className="section-faq">
-          <div className="content">
-            <h2>FAQs</h2>
-            <div className="gradient-line"></div>
-            <div className="accordion">
-              <div className="accordion-item" id="question1">
-                <a className="accordion-link" href="#question1">
-                  How do I use this calculator?
-                  <img src={addIcon} alt="add icon" className="icon-add" />
-                  <img src={removeIcon} className="icon-remove" alt="remove icon" />
-                </a>
-                <div className="answer">
-                  <p>
-                    Simply enter your goal amount, percentage charge, and fixed
-                    charge. Click "Calculate" to see the fee breakdown.
-                  </p>
-                </div>
-              </div>
-              <div className="accordion-item" id="question2">
-                <a className="accordion-link" href="#question2">
-                  How do I use this calculator?
-                  <img src={addIcon} className="icon-add" alt="add icon" />
-                  <img src={removeIcon} className="icon-remove" alt="remove icon" />
-                </a>
-                <div className="answer">
-                  <p>
-                    Simply enter your goal amount, percentage charge, and fixed
-                    charge. Click "Calculate" to see the fee breakdown.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
-        <div className="section-share">
+        {/* <div className="section-share">
           <div className="content">
             <h2>
               <span>Share</span> this page
@@ -367,7 +317,7 @@ dispatch({type:"SELECT_COUNTRY", payload:countries[0].name})
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
