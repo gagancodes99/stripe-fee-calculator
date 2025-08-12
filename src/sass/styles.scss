@@ -1,23 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
-// Modern color palette
-$bg-primary: #ffffff;
-$bg-secondary: #f8fafc;
-$bg-tertiary: #f1f5f9;
-$accent-primary: #6366f1;
-$accent-secondary: #8b5cf6;
-$accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-$text-primary: #0f172a;
-$text-secondary: #475569;
-$text-muted: #64748b;
-$border-color: #e2e8f0;
-$success-color: #10b981;
-$warning-color: #f59e0b;
-$error-color: #ef4444;
-$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-$shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+// Modern color palette with neon accents
+$bg-primary: #0a0a0f;
+$bg-secondary: #111118;
+$bg-tertiary: #1a1a24;
+$bg-card: #1e1e2e;
+$bg-glass: rgba(255, 255, 255, 0.05);
+$accent-primary: #00d4ff;
+$accent-secondary: #ff006e;
+$accent-tertiary: #8b5cf6;
+$neon-blue: #00d4ff;
+$neon-pink: #ff006e;
+$neon-purple: #8b5cf6;
+$neon-green: #00ff88;
+$neon-orange: #ff8c00;
+$text-primary: #ffffff;
+$text-secondary: #b4b4b8;
+$text-muted: #6b6b7d;
+$border-color: rgba(255, 255, 255, 0.1);
+$border-neon: rgba(0, 212, 255, 0.3);
+$success-color: #00ff88;
+$warning-color: #ff8c00;
+$error-color: #ff4757;
+
+// Neon glow effects
+$neon-glow-blue: 0 0 5px $neon-blue, 0 0 10px $neon-blue, 0 0 15px $neon-blue, 0 0 20px $neon-blue;
+$neon-glow-pink: 0 0 5px $neon-pink, 0 0 10px $neon-pink, 0 0 15px $neon-pink, 0 0 20px $neon-pink;
+$neon-glow-purple: 0 0 5px $neon-purple, 0 0 10px $neon-purple, 0 0 15px $neon-purple, 0 0 20px $neon-purple;
+$neon-glow-green: 0 0 5px $neon-green, 0 0 10px $neon-green, 0 0 15px $neon-green, 0 0 20px $neon-green;
+
+// Gradients
+$gradient-neon: linear-gradient(135deg, $neon-blue 0%, $neon-pink 50%, $neon-purple 100%);
+$gradient-dark: linear-gradient(135deg, $bg-secondary 0%, $bg-tertiary 100%);
+$gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 
 // Typography scale
 $text-xs: 0.75rem;
@@ -30,6 +46,8 @@ $text-3xl: 1.875rem;
 $text-4xl: 2.25rem;
 $text-5xl: 3rem;
 $text-6xl: 3.75rem;
+$text-7xl: 4.5rem;
+$text-8xl: 6rem;
 
 // Spacing scale
 $space-1: 0.25rem;
@@ -44,6 +62,7 @@ $space-12: 3rem;
 $space-16: 4rem;
 $space-20: 5rem;
 $space-24: 6rem;
+$space-32: 8rem;
 
 // Border radius
 $rounded-sm: 0.125rem;
@@ -59,62 +78,76 @@ $rounded-full: 9999px;
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: $bg-primary;
+  overflow-x: hidden;
+}
+
 .App {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
   background: $bg-primary;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 .App-wrapper {
-  background: $bg-primary;
+  background: transparent;
   color: $text-primary;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
 }
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.025em;
 }
 
-h1 {
-  font-size: $text-5xl;
-  background: $accent-gradient;
+.neon-text {
+  background: $gradient-neon;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
 }
 
-h2 {
-  font-size: $text-4xl;
-  color: $text-primary;
-}
-
-p {
-  font-size: $text-lg;
-  line-height: 1.7;
-  font-weight: 400;
-  color: $text-secondary;
-}
-
-.header {
-  background: linear-gradient(135deg, $bg-secondary 0%, $bg-tertiary 100%);
+.hero {
   width: 100%;
-  padding: $space-24 $space-4;
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
   position: relative;
+  background: $gradient-dark;
   overflow: hidden;
   
   &::before {
@@ -122,394 +155,605 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300d4ff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    animation: float 20s ease-in-out infinite;
   }
   
-  .content {
-    max-width: 64rem;
+  .hero-content {
+    max-width: 80rem;
     text-align: center;
+    padding: $space-8;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     
-    h1 {
-      margin-bottom: $space-6;
-      span {
-        background: $accent-gradient;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-2;
+      background: $bg-glass;
+      border: 1px solid $border-neon;
+      border-radius: $rounded-full;
+      padding: $space-2 $space-4;
+      margin-bottom: $space-8;
+      font-size: $text-sm;
+      font-weight: 500;
+      color: $neon-blue;
+      backdrop-filter: blur(10px);
+      box-shadow: $neon-glow-blue;
+      animation: pulse-neon 2s ease-in-out infinite;
+      
+      &::before {
+        content: '⚡';
+        font-size: $text-base;
       }
     }
     
-    p {
-      font-size: $text-xl;
+    h1 {
+      font-size: $text-8xl;
+      margin-bottom: $space-6;
+      font-weight: 900;
+      
+      .neon-text {
+        text-shadow: $neon-glow-blue;
+        animation: neon-flicker 3s ease-in-out infinite alternate;
+      }
+      
+      .highlight {
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          background: $gradient-neon;
+          border-radius: $rounded-full;
+          box-shadow: $neon-glow-pink;
+        }
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: $text-2xl;
+      color: $text-secondary;
+      margin-bottom: $space-12;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: $space-4;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: $space-16;
+      
+      .cta-primary {
+        background: $gradient-neon;
+        color: $bg-primary;
+        padding: $space-4 $space-8;
+        border-radius: $rounded-2xl;
+        font-weight: 600;
+        font-size: $text-lg;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: $neon-glow-blue;
+        border: none;
+        cursor: pointer;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+      }
+      
+      .cta-secondary {
+        background: $bg-glass;
+        color: $text-primary;
+        padding: $space-4 $space-8;
+        border-radius: $rounded-2xl;
+        font-weight: 600;
+        font-size: $text-lg;
+        text-decoration: none;
+        border: 1px solid $border-color;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: $neon-blue;
+          box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+      }
+    }
+    
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $space-8;
       max-width: 48rem;
       margin: 0 auto;
-      color: $text-secondary;
+      
+      .stat {
+        text-align: center;
+        
+        .stat-number {
+          font-size: $text-4xl;
+          font-weight: 800;
+          color: $neon-green;
+          text-shadow: $neon-glow-green;
+          display: block;
+          margin-bottom: $space-2;
+          font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .stat-label {
+          font-size: $text-sm;
+          color: $text-muted;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          font-weight: 500;
+        }
+      }
     }
   }
 }
 
-.section {
+.features-section {
   width: 100%;
-  padding: $space-20 $space-4;
-  display: flex;
-  justify-content: center;
+  padding: $space-32 $space-4;
+  background: $bg-secondary;
+  position: relative;
   
-  .content {
-    width: 100%;
-    max-width: 64rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .section-content {
+    max-width: 80rem;
+    margin: 0 auto;
     text-align: center;
     
-    h2 {
-      margin-bottom: $space-6;
-      span {
-        background: $accent-gradient;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    .section-header {
+      margin-bottom: $space-16;
+      
+      h2 {
+        font-size: $text-5xl;
+        margin-bottom: $space-6;
+        
+        .neon-text {
+          text-shadow: $neon-glow-pink;
+        }
+      }
+      
+      p {
+        font-size: $text-xl;
+        color: $text-secondary;
+        max-width: 48rem;
+        margin: 0 auto;
+        line-height: 1.7;
       }
     }
     
-    p {
-      margin-bottom: $space-8;
-      max-width: 48rem;
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $space-8;
+      margin-bottom: $space-16;
+      
+      .feature-card {
+        background: $bg-glass;
+        border: 1px solid $border-color;
+        border-radius: $rounded-2xl;
+        padding: $space-8;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: $gradient-neon;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover {
+          transform: translateY(-5px);
+          border-color: $neon-blue;
+          box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+          
+          &::before {
+            transform: translateX(0);
+          }
+        }
+        
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          background: $gradient-neon;
+          border-radius: $rounded-2xl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto $space-6;
+          font-size: $text-2xl;
+          box-shadow: $neon-glow-blue;
+        }
+        
+        h3 {
+          font-size: $text-xl;
+          margin-bottom: $space-4;
+          color: $text-primary;
+        }
+        
+        p {
+          color: $text-secondary;
+          line-height: 1.6;
+          font-size: $text-base;
+        }
+      }
+    }
+  }
+}
+
+.how-it-works {
+  width: 100%;
+  padding: $space-32 $space-4;
+  background: $bg-primary;
+  
+  .section-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    text-align: center;
+    
+    .section-header {
+      margin-bottom: $space-16;
+      
+      h2 {
+        font-size: $text-5xl;
+        margin-bottom: $space-6;
+        
+        .neon-text {
+          text-shadow: $neon-glow-purple;
+        }
+      }
+      
+      p {
+        font-size: $text-xl;
+        color: $text-secondary;
+        max-width: 48rem;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+    }
+    
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: $space-8;
+      margin-bottom: $space-16;
+      
+      .step {
+        position: relative;
+        
+        .step-number {
+          width: 80px;
+          height: 80px;
+          background: $gradient-neon;
+          border-radius: $rounded-full;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto $space-6;
+          font-size: $text-2xl;
+          font-weight: 800;
+          color: $bg-primary;
+          box-shadow: $neon-glow-blue;
+        }
+        
+        h3 {
+          font-size: $text-xl;
+          margin-bottom: $space-4;
+          color: $text-primary;
+        }
+        
+        p {
+          color: $text-secondary;
+          line-height: 1.6;
+        }
+      }
     }
     
     .svg {
       width: 100%;
       max-width: 32rem;
       margin: $space-8 auto;
-      filter: drop-shadow($shadow-lg);
+      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
     }
   }
 }
 
-.section-fee {
-  background: $bg-secondary;
+.calculator-section {
   width: 100%;
-  padding: $space-20 $space-4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: $space-32 $space-4;
+  background: $bg-secondary;
   
-  .content {
-    width: 100%;
-    max-width: 48rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  .section-content {
+    max-width: 80rem;
+    margin: 0 auto;
     
-    h2 {
-      margin-bottom: $space-6;
-      span {
-        background: $accent-gradient;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    .section-header {
+      text-align: center;
+      margin-bottom: $space-16;
+      
+      h2 {
+        font-size: $text-5xl;
+        margin-bottom: $space-6;
+        
+        .neon-text {
+          text-shadow: $neon-glow-green;
+        }
+      }
+      
+      .formula {
+        font-family: 'JetBrains Mono', monospace;
+        background: $bg-card;
+        padding: $space-6 $space-8;
+        border-radius: $rounded-2xl;
+        border: 1px solid $border-neon;
+        font-size: $text-lg;
+        color: $neon-blue;
+        max-width: 48rem;
+        margin: 0 auto;
+        box-shadow: $neon-glow-blue;
+        backdrop-filter: blur(10px);
       }
     }
     
-    p {
-      margin-bottom: $space-8;
-      font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-      background: $bg-primary;
-      padding: $space-4 $space-6;
-      border-radius: $rounded-lg;
-      border: 1px solid $border-color;
-      font-size: $text-base;
-      color: $text-primary;
-      box-shadow: $shadow-sm;
-    }
-  }
-  
-  .sub-content {
-    width: 100%;
-    max-width: 56rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    .calculations {
-      background: $bg-primary;
-      width: 100%;
+    .calculator-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: $space-6;
-      padding: $space-8;
-      border-radius: $rounded-2xl;
-      border: 1px solid $border-color;
-      box-shadow: $shadow-xl;
-      margin-bottom: $space-8;
-      transition: all 0.3s ease;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-12;
+      align-items: start;
       
-      .cal {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: $space-6;
-        background: $bg-secondary;
-        border-radius: $rounded-xl;
+      .calculations {
+        background: $bg-glass;
         border: 1px solid $border-color;
-        transition: all 0.3s ease;
+        border-radius: $rounded-3xl;
+        padding: $space-8;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         
-        &:hover {
-          transform: translateY(-2px);
-          box-shadow: $shadow-lg;
-          border-color: $accent-primary;
+        .calculations-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: $space-6;
+          
+          .cal {
+            background: $bg-card;
+            border: 1px solid $border-color;
+            border-radius: $rounded-2xl;
+            padding: $space-6;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 2px;
+              background: $gradient-neon;
+              transform: translateX(-100%);
+              transition: transform 0.3s ease;
+            }
+            
+            &:hover {
+              transform: translateY(-2px);
+              
+              &::before {
+                transform: translateX(0);
+              }
+            }
+            
+            h3 {
+              font-size: $text-sm;
+              font-weight: 600;
+              color: $text-muted;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              margin-bottom: $space-3;
+            }
+            
+            span {
+              font-weight: 800;
+              font-size: $text-3xl;
+              font-family: 'JetBrains Mono', monospace;
+              display: block;
+            }
+            
+            &:first-child {
+              border-color: $neon-blue;
+              
+              span {
+                color: $neon-blue;
+                text-shadow: $neon-glow-blue;
+              }
+            }
+            
+            &:nth-child(2) {
+              border-color: $neon-orange;
+              
+              span {
+                color: $neon-orange;
+                text-shadow: 0 0 10px $neon-orange;
+              }
+            }
+            
+            &:last-child {
+              border-color: $neon-green;
+              
+              span {
+                color: $neon-green;
+                text-shadow: $neon-glow-green;
+              }
+            }
+          }
         }
+      }
+      
+      .input-cont {
+        background: $bg-glass;
+        border: 1px solid $border-color;
+        border-radius: $rounded-3xl;
+        padding: $space-8;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         
-        h3 {
+        label {
+          color: $text-primary;
           font-size: $text-sm;
           font-weight: 600;
-          color: $text-muted;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
           margin-bottom: $space-3;
+          display: block;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
         }
         
-        span {
-          font-weight: 700;
-          font-size: $text-2xl;
+        input, select {
+          width: 100%;
+          margin-bottom: $space-6;
+          padding: $space-4 $space-5;
+          border: 2px solid $border-color;
+          border-radius: $rounded-xl;
+          background: $bg-card;
+          outline: none;
+          font-family: "Inter", sans-serif;
+          font-size: $text-base;
+          font-weight: 500;
           color: $text-primary;
-          font-feature-settings: 'tnum';
-        }
-        
-        &:first-child span {
-          color: $accent-primary;
-        }
-        
-        &:nth-child(2) span {
-          color: $warning-color;
-        }
-        
-        &:last-child span {
-          color: $success-color;
-        }
-      }
-      
-      &:hover {
-        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-      }
-    }
-  }
-}
-
-.input-cont {
-  background: $bg-primary;
-  border-radius: $rounded-2xl;
-  width: 100%;
-  max-width: 32rem;
-  padding: $space-8;
-  border: 1px solid $border-color;
-  box-shadow: $shadow-xl;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  }
-  
-  label {
-    color: $text-primary;
-    font-size: $text-sm;
-    font-weight: 600;
-    margin-bottom: $space-3;
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  input, select {
-    width: 100%;
-    margin-bottom: $space-6;
-    padding: $space-4 $space-5;
-    border: 2px solid $border-color;
-    border-radius: $rounded-xl;
-    background: $bg-secondary;
-    outline: none;
-    font-family: "Inter", sans-serif;
-    font-size: $text-base;
-    font-weight: 500;
-    color: $text-primary;
-    transition: all 0.3s ease;
-    font-feature-settings: 'tnum';
-    
-    &:focus {
-      border-color: $accent-primary;
-      box-shadow: 0 0 0 3px rgb(99 102 241 / 0.1);
-      background: $bg-primary;
-    }
-    
-    &:hover {
-      border-color: $text-muted;
-    }
-    
-    &[readonly] {
-      background: $bg-tertiary;
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-  }
-  
-  .calculate {
-    width: 100%;
-    color: $bg-primary;
-    font-size: $text-base;
-    font-weight: 600;
-    border: none;
-    border-radius: $rounded-xl;
-    background: $accent-gradient;
-    margin-bottom: $space-4;
-    padding: $space-4 $space-8;
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: $shadow-md;
-    
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-lg;
-    }
-    
-    &:active {
-      transform: translateY(0);
-      box-shadow: $shadow-sm;
-    }
-  }
-  
-  .reset {
-    width: 100%;
-    border: 2px solid $border-color;
-    background: $bg-primary;
-    color: $text-secondary;
-    font-family: "Inter", sans-serif;
-    font-size: $text-sm;
-    font-weight: 600;
-    padding: $space-3 $space-6;
-    border-radius: $rounded-lg;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    
-    &:hover {
-      border-color: $text-muted;
-      color: $text-primary;
-      background: $bg-secondary;
-    }
-    
-    &:active {
-      background: $bg-tertiary;
-    }
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  h1 {
-    font-size: $text-4xl;
-  }
-  
-  h2 {
-    font-size: $text-3xl;
-  }
-  
-  p {
-    font-size: $text-base;
-  }
-  
-  .header {
-    padding: $space-16 $space-4;
-    
-    .content {
-      h1 {
-        margin-bottom: $space-4;
-      }
-      
-      p {
-        font-size: $text-lg;
-      }
-    }
-  }
-  
-  .section, .section-fee {
-    padding: $space-16 $space-4;
-  }
-  
-  .section-fee {
-    .sub-content {
-      .calculations {
-        grid-template-columns: 1fr;
-        gap: $space-4;
-        padding: $space-6;
-        
-        .cal {
-          padding: $space-4;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
           
-          span {
-            font-size: $text-xl;
+          &:focus {
+            border-color: $neon-blue;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            background: $bg-tertiary;
+          }
+          
+          &:hover {
+            border-color: $text-muted;
+          }
+          
+          &[readonly] {
+            background: $bg-tertiary;
+            cursor: not-allowed;
+            opacity: 0.7;
+          }
+        }
+        
+        .calculate {
+          width: 100%;
+          color: $bg-primary;
+          font-size: $text-base;
+          font-weight: 700;
+          border: none;
+          border-radius: $rounded-2xl;
+          background: $gradient-neon;
+          margin-bottom: $space-4;
+          padding: $space-4 $space-8;
+          font-family: "Inter", sans-serif;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          box-shadow: $neon-glow-blue;
+          
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+          }
+          
+          &:active {
+            transform: translateY(0);
+          }
+        }
+        
+        .reset {
+          width: 100%;
+          border: 2px solid $border-color;
+          background: $bg-glass;
+          color: $text-secondary;
+          font-family: "Inter", sans-serif;
+          font-size: $text-sm;
+          font-weight: 600;
+          padding: $space-3 $space-6;
+          border-radius: $rounded-xl;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          backdrop-filter: blur(10px);
+          
+          &:hover {
+            border-color: $neon-pink;
+            color: $text-primary;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
           }
         }
       }
     }
   }
-  
-  .input-cont {
-    padding: $space-6;
-    
-    input, select {
-      padding: $space-3 $space-4;
-      margin-bottom: $space-4;
-    }
-    
-    .calculate {
-      padding: $space-3 $space-6;
-      margin-bottom: $space-3;
-    }
+}
+
+// Animations
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px $neon-blue,
+      0 0 10px $neon-blue,
+      0 0 15px $neon-blue,
+      0 0 20px $neon-blue;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px $neon-blue,
+      0 0 5px $neon-blue,
+      0 0 8px $neon-blue,
+      0 0 12px $neon-blue;
   }
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: $text-3xl;
+@keyframes pulse-neon {
+  0%, 100% {
+    box-shadow: 0 0 5px $neon-blue, 0 0 10px $neon-blue;
   }
-  
-  h2 {
-    font-size: $text-2xl;
-  }
-  
-  .header {
-    padding: $space-12 $space-4;
-  }
-  
-  .section, .section-fee {
-    padding: $space-12 $space-4;
-  }
-  
-  .section-fee {
-    .content {
-      p {
-        font-size: $text-sm;
-        padding: $space-3 $space-4;
-      }
-    }
+  50% {
+    box-shadow: 0 0 10px $neon-blue, 0 0 20px $neon-blue, 0 0 30px $neon-blue;
   }
 }
 
-// Animation utilities
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -522,11 +766,73 @@ p {
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .calculator-section .section-content .calculator-container {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero .hero-content {
+    h1 {
+      font-size: $text-6xl;
+    }
+    
+    .hero-subtitle {
+      font-size: $text-xl;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      
+      .cta-primary, .cta-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: $space-6;
+    }
+  }
+  
+  .features-section, .how-it-works, .calculator-section {
+    padding: $space-20 $space-4;
+    
+    .section-header h2 {
+      font-size: $text-4xl;
+    }
+  }
+  
+  .features-grid, .steps-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .hero-content h1 {
+    font-size: $text-5xl;
+  }
+  
+  .section-header h2 {
+    font-size: $text-3xl;
+  }
+  
+  .calculator-section .section-content .calculator-container {
+    .calculations, .input-cont {
+      padding: $space-6;
+    }
+  }
 }
 
 // Focus styles for accessibility
 *:focus-visible {
-  outline: 2px solid $accent-primary;
+  outline: 2px solid $neon-blue;
   outline-offset: 2px;
 }
