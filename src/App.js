@@ -1,12 +1,6 @@
 
 import React, { useEffect, useReducer } from "react";
 import "./sass/styles.scss";
-import facebookLogo from "./assets/facebook.png";
-import twitterLogo from "./assets/twitter.png";
-import linkedinLogo from "./assets/linkedin.png";
-import redditLogo from "./assets/reddit.png";
-import emailLogo from "./assets/email.png";
-import pinterestLogo from "./assets/pinterest.png";
 import { ReactComponent as HowItWorks } from "./assets/how-it-works.svg";
 import countries from "./db.json"
 
@@ -138,108 +132,74 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-wrapper">
-        <div className="header">
+        <div className="header fade-in-up">
           <div className="content">
             <h1>
               <span>Stripe</span> fee calculator
             </h1>
             <p>
-              Welcome to the Stripe Fee Calculator! This tool empowers you to
-              effortlessly calculate fees associated with your transactions on
-              Stripe. Whether you're a business owner, freelancer, or anyone
-              using Stripe for payment processing, this calculator helps you
-              gain insights into the fees for your transactions. Let's explore
-              how it works and how you can make the most of it.
+              Calculate Stripe processing fees with precision. Get instant insights 
+              into transaction costs and optimize your payment strategy with our 
+              modern, easy-to-use calculator.
             </p>
           </div>
         </div>
 
-        <div className="section">
+        <div className="section fade-in-up">
           <div className="content">
             <h2>
               <span>How</span> it works
             </h2>
             <p>
-              To get started, simply enter your goal amount, the percentage
-              charge, and the fixed charge in the form below. Click "Calculate"
-              to see a detailed breakdown of fees for both old and new
-              transactions. The visual representation explains the process step
-              by step, making it easy for you to understand and optimize your
-              transactions.
+              Enter your target amount and select your country to see real-time 
+              fee calculations. Our smart calculator automatically applies the 
+              correct rates and shows you exactly how much to charge to receive 
+              your desired amount.
             </p>
             <HowItWorks className="svg" />
           </div>
         </div>
 
-        <div className="section-fee">
+        <div className="section-fee fade-in-up">
           <div className="content">
             <h2>
               <span>Fee</span> calculation formula
             </h2>
-            <div>
             <p>
-              The fee is calculated using the formula: <br />  </p>
-              <p>Amount to ask: (goal_amount + fixed) / (1 - percent/100)</p>
-              <p>Stripe Fee: askAmount * (percent / 100) + fixed</p>
-           
-            </div>
+              Amount to ask = (goal_amount + fixed_fee) / (1 - percentage_fee/100)
+            </p>
             <div className="sub-content">
-            <div className="calculations">
-              <div className="cal">
-                <h3>Ask</h3>
-                <span>{state?.askAmount}</span>
+              <div className="calculations">
+                <div className="cal">
+                  <h3>Amount to Ask</h3>
+                  <span>${state?.askAmount}</span>
+                </div>
+                <div className="cal">
+                  <h3>Stripe Fee</h3>
+                  <span>${state.totalFeeNew}</span>
+                </div>
+                <div className="cal">
+                  <h3>You Receive</h3>
+                  <span>${state.receiveAmountNew}</span>
+                </div>
               </div>
-              <div className="cal">
-                <h3>Fee</h3>
-                <span>{state.totalFeeNew}</span>
-              </div>
-              <div className="cal">
-                <h3>Receive</h3>
-                <span>{state.receiveAmountNew}</span>
-              </div>
-            </div>
-          </div>
             <form
               className="input-cont"
               onSubmit={(e) => {
                 e.preventDefault();
               }}
             >
-              <label className="input-group-text">Select country</label>
-
-              <select className="form-select" id="inputGroupSelect01" onChange={(e) => handleCountryChange(e)}>
-
+              <label>Country</label>
+              <select onChange={(e) => handleCountryChange(e)}>
                 {countries?.map((ele) => (
                   <option value={ele.name} key={ele.code}>{ele.name}</option>
                 ))}
               </select>
-              {/* <label className="input-group-text">Select Card</label>
-              <div style={{ display: "flex", width: "100%", justifyContent: "space-around" }}>
-                <div className="form-check">
-
-                  <input  type="radio" className="btn-check"  name="card" id="exampleRadios1" value="domestic" defaultChecked onChange={(e) => handleCardChange(e)} />
-                  <label  className="btn btn-secondary" htmlFor="exampleRadios1" >
-                    Domestic
-                  </label>
-                </div>
-
-                <div className="form-check">
-
-                  <input  type="radio" className="btn-check"  name="card" id="exampleRadios2" value="international" onChange={(e) => handleCardChange(e)} />
-                  <label  className="btn btn-secondary" htmlFor="exampleRadios2" >
-                    International
-                  </label>
               
-                </div>
-                
-              </div> */}
-
-
-
-              <label>Enter an invoice amount</label>
+              <label>Target Amount</label>
               <input
                 name="amount"
-                placeholder="Amount"
+                placeholder="Enter amount you want to receive"
                 type="number"
                 step={0.01}
                 min={0}
@@ -249,33 +209,25 @@ const App = () => {
                   dispatch({ type: "SET_GOAL", payload: parseFloat(e.target.value) })
                 }
               />
-              <label>Percentage Charge</label>
+              <label>Processing Fee (%)</label>
               <input
                 name="percent"
-                placeholder="Percent charge"
+                placeholder="Percentage fee"
                 type="number"
                 step={0.01}
                 min={0}
                 value={state.percent}
                 readOnly
-              // onChange={(e) =>
-              //   // setState({ ...state, percent: parseFloat(e.target.value) })
-              //   dispatch({ type: "SET_PERCENT", payload: parseFloat(e.target.value) })
-              // }
               />
-              <label>Fixed Charge</label>
+              <label>Fixed Fee ($)</label>
               <input
                 name="fixed"
-                placeholder="Fixed charge"
+                placeholder="Fixed fee amount"
                 type="number"
                 step={0.01}
                 min={0}
                 value={state.fixed}
                 readOnly
-              // onChange={(e) =>
-              //   // setState({ ...state, fixed: parseFloat(e.target.value) })
-              //   dispatch({ type: "SET_FIXED", payload: parseFloat(e.target.value) })
-              // }
               />
               <button className="calculate" onClick={calculate}>
                 Calculate
@@ -284,40 +236,9 @@ const App = () => {
                 Reset
               </button>
             </form>
-          </div>
-         
-        </div>
-
-       
-
-        {/* <div className="section-share">
-          <div className="content">
-            <h2>
-              <span>Share</span> this page
-            </h2>
-            <div className="gradient-line"></div>
-            <div className="row-style">
-              <a href="#" className="share-btn">
-                <img src={facebookLogo} alt="facebook sharing button" />
-              </a>
-              <a href="#" className="share-btn">
-                <img src={twitterLogo} alt="twitter sharing button" />
-              </a>
-              <a className="share-btn">
-                <img src={pinterestLogo} alt="pinterest sharing button" />
-              </a>
-              <a href="#" className="share-btn">
-                <img src={linkedinLogo} alt="linkedin sharing button" />
-              </a>
-              <a href="#" className="share-btn">
-                <img src={redditLogo} alt="reddit sharing button" />
-              </a>
-              <a href="#" className="share-btn">
-                <img src={emailLogo} alt="email sharing button" />
-              </a>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
